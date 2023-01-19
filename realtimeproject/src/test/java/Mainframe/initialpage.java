@@ -5,6 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -12,9 +13,13 @@ import pageobjects.LoginPageObjects;
 import pageobjects.Secondpage;
 
 public class initialpage {
-
+	
+	
 	@Test
 	public void baseclass() {
+		
+		
+		
 		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
 		driver.get("https://phptravels.net/login");
@@ -36,6 +41,10 @@ public class initialpage {
 		Secondpage.confirm(driver).click();
 		Secondpage.search(driver).click();
 		driver.navigate().back();
+		Actions actions = new Actions(driver);
+		actions.contextClick(driver.findElement(By.id("flights-search"))).perform();
+		driver.findElement(By.id("flights-search")).click();
+		
 		
 		
 		
